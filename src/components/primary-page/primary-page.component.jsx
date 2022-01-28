@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MovieCard from '../movie-card/movie-card.componet';
 import StickyTopNavbar from '../navbar-header/navbar-header.component';
 import useMovies from '../../hooks/movies.hook';
@@ -7,16 +7,17 @@ import { useSelector } from 'react-redux';
 import LoadMoreButton from '../load-more-button/load-more-button';
 
 const PrimaryPage = () => {
-    const page = useSelector((state) => state.page);
-    const {data} = useMovies(page);
+    useMovies();
+    const state = useSelector((state) => state);
+    
     return (
         <>
             <StickyTopNavbar/>
             <div className='main'>
-            {data?.map(movie => {
+            {state.movies?.map(movie => {
                 const props = {
                     poster_path: movie.poster_path,
-                    title: movie.title,
+                    title: movie.original_title,
                     vote_average: movie.vote_average,
                     overview: movie.overview
                 }

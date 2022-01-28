@@ -6,9 +6,13 @@
 }
 
 .navbar{
-    width: 100%;
+    position: fixed;
+    min-width: 100%;
     padding: 25px 0;
     background-color: #1b1b1b;
+    left: 0;
+    top: 0;
+    z-index: 10000;
 }
 .navbar .logo a{
     color: white;
@@ -33,6 +37,7 @@
 .content{
     margin: auto;
     padding: 0px 60px;
+    
 }
 .navbar .content{
     display: flex;
@@ -45,6 +50,7 @@
     align-items: center;
     justify-content: space-between;
     z-index: 1000000;
+    
 }
 
 .menu_list li{
