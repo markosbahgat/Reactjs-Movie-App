@@ -1,14 +1,22 @@
 import { useState, useEffect } from 'react';
 import GetMoviesApi from '../api/movies.api.js';
 
-const useMovies = () => {
-    const page =  1;
-    const [data, setData] = useState([]);
+
+const useMovies = (page) => {
+    const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const AllMovies = async () =>{
         try{
             const res = await GetMoviesApi(page);
-            setData(res && res);
+            const allData = await res.results;
+            
+            if(data){
+                allData.map(item => {
+                    setData(data => [...data, item]);
+                })
+            }else{
+                setData(allData);
+            }
         }
         catch(error){
             setError(error);
@@ -17,11 +25,11 @@ const useMovies = () => {
 
     }
     useEffect(() => {
-        AllMovies() ;
+        AllMovies();
      }, [page])
 
     return{
-        data: data || [],   
+        data,  
         AllMovies,
         error,
     }

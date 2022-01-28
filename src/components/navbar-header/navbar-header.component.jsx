@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchBar from '../ExpandableSearchBar/SearchBar';
 import './navbar-header.scss'
 
 const StickyTopNavbar = () => {
@@ -27,10 +28,10 @@ const StickyTopNavbar = () => {
                         <div className='icon cancel_btn' onClick={handleShowNavbar}>
                             <i className="fas fa-times fa-lg"></i>
                         </div>
+                        <li><SearchBar/></li>
                         <li><a href="http://www.markosbahgat.com" target="_blank" rel="noreferrer" className="active"><i class="fas fa-home"></i></a></li>
-                        <li><a href="http://www.markosbahgat.com">Home</a></li>
                         <li><a href="http://www.markosbahgat.com">About</a></li>
-                        <li><a href="http://www.markosbahgat.com">Work</a></li>
+                        <li><a href="/components/SignUpForm/SignUpForm">Sign Up</a></li>
                         <li><a href="http://www.markosbahgat.com">ContactUs</a></li>
                         <li><a href="http://www.markosbahgat.com"><i className="fas fa-user-circle fa-lg"></i></a></li>
                     </ul>
