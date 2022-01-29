@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import styles from '../../../styles/SignUpForm.module.scss'
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import useSignUp from '../../../hooks/SignUpHook';
+import './SignUpForm.scss';
+import useSignUp from '../../hooks/SignUpHook.js';
 
 const SignUpForm = () => {
   
@@ -18,6 +16,7 @@ const SignUpForm = () => {
       password,
       confirmpassword
     } = data;
+    console.log(data);
 
     if (email === confirmemail && password === confirmpassword){
         signUp(email, password);
@@ -53,15 +52,14 @@ const SignUpForm = () => {
   };
           
         return ( 
-          <main  className={styles.login_block}>
-              <h1 className={styles.page_title}>First Step</h1>
-              <h5 className={styles.title_span}>Personal Information</h5>
-              <form onSubmit={handleSubmit(onSubmit)} className={styles.LoginForm}>
-              <div className={styles.input_container}>
-                    <label className={styles.input_label}>Email Address</label>
+          <main  className="login_block">
+              <h1 className="page_title">Sign Up Form</h1>
+              <form onSubmit={handleSubmit(onSubmit)} className="LoginForm">
+              <div className="input_container">
+                    <label className="input_label">Email Address</label>
                     <input
                     type="email"
-                    className={styles.input_field}
+                    className="input_field"
                     placeholder='Enter your email'
                     name='email'
                     {...register("email",
@@ -71,31 +69,31 @@ const SignUpForm = () => {
                     <i className="fas fa-envelope fa-lg"></i>
                 {errors.email?.type === 'required' && <span>Email is required</span>}
                 </div>
-                <div className={styles.input_container}>
-                    <label className={styles.input_label}>Email Address</label>
-                    <input type="email"  className={styles.input_field} placeholder='Enter your email' name='email' {...register("email", {  required: true, pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i })}/>
+                <div className="input_container">
+                    <label className="input_label">Email Address</label>
+                    <input type="email"  className="input_field" placeholder='Enter your email' name='email' {...register("confirmemail", {  required: true, pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i })}/>
                     <i className="fas fa-envelope fa-lg"></i>
                 {errors.email?.type === 'required' && <span>Email is required</span>}
                 </div>
-                <div className={styles.input_container}>
-                        <label className={styles.input_label}>Password</label>
-                        <input type={values.showPassword ? 'text' : 'password'}  className={styles.input_field} placeholder='Enter your password' name='password' {...register("password", {  required: true })}/>
+                <div className="input_container">
+                        <label className="input_label">Password</label>
+                        <input type={values.showPassword ? 'text' : 'password'}  className="input_field" placeholder='Enter your password' name='password' {...register("password", {  required: true })}/>
                         <i className="fas fa-lock fa-lg"></i>
-                        <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} className={styles.visibility_icon}>
-                          {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                        <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} className="visibility_icon">
+                          {values.showPassword ? <i class="fas fa-eye-slash"></i> : <i class="fas fa-eye"></i>}
                         </div>
                 {errors.password?.type === 'required' && <span>This field is required</span>}
                 </div>
-                <div className={styles.input_container}>
-                      <label className={styles.input_label}>Confirm Password</label>
-                      <input type={values.showPassword ? 'text' : 'password'}  className={styles.input_field} placeholder='Enter your password' name='password' {...register("confirmpassword", {  required: true, pattern: /^[A-Za-z]+$/i })}/>
+                <div className="input_container">
+                      <label className="input_label">Confirm Password</label>
+                      <input type={values.showPassword ? 'text' : 'password'}  className="input_field" placeholder='Enter your password' name='password' {...register("confirmpassword", {  required: true, pattern: /^[A-Za-z]+$/i })}/>
                       <i className="fas fa-lock fa-lg"></i>
-                      <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} className={styles.visibility_icon}>
-                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                      <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} className="visibility_icon">
+                        {values.showPassword ? <i class="fas fa-eye-slash"></i> : <i class="fas fa-eye"></i>}
                       </div>
                 {errors.password?.type === 'required' && <span>Please Confirm Your Password</span>}
                 </div>
-                  <button type="submit" className={styles.singin_button}>Continue</button>
+                  <button type="submit" className="singin_button">Continue</button>
             </form>
         </main>
         );

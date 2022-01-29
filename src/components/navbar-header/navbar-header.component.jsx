@@ -1,8 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { ACTIONS } from '../../store';
 import SearchBar from '../ExpandableSearchBar/SearchBar';
 import './navbar-header.scss'
+import { Link } from "react-router-dom";
 
 const StickyTopNavbar = () => {
+    const dispatch = useDispatch();
 
     const handleShowNavbar = () => {
         const menu = document.querySelector(".menu_list");
@@ -23,17 +27,18 @@ const StickyTopNavbar = () => {
     return (
         <nav className='navbar'>
             <div className="content">
-                <div className='logo'><a href='markosbahgat.com'><strong>Movies Website</strong></a></div>
+                <div className='logo'><Link to='/'><strong>Movies Website</strong></Link></div>
                     <ul className="menu_list">
                         <div className='icon cancel_btn' onClick={handleShowNavbar}>
                             <i className="fas fa-times fa-lg"></i>
                         </div>
                         <li><SearchBar/></li>
-                        <li><a href="http://www.markosbahgat.com" target="_blank" rel="noreferrer" className="active"><i class="fas fa-home"></i></a></li>
-                        <li><a href="http://www.markosbahgat.com">About</a></li>
-                        <li><a href="/components/SignUpForm/SignUpForm">Sign Up</a></li>
-                        <li><a href="http://www.markosbahgat.com">ContactUs</a></li>
-                        <li><a href="http://www.markosbahgat.com"><i className="fas fa-user-circle fa-lg"></i></a></li>
+                        <li><Link to="/" className="active"><i class="fas fa-home"></i></Link></li>
+                        <li><a href="http://www.markosbahgat.com"  target="_blank" rel="noreferrer">About</a></li>
+                        <li style={{display:`${localStorage.getItem("token") && "none"}`}}><a href='/registration' >Sign Up</a></li>
+                        <li style={{display:`${!localStorage.getItem("token") && "none"}`}}><a href='/registration' onClick={() => localStorage.removeItem("token")}>Log Out</a></li>
+                        <li><a href="http://www.markosbahgat.com"  target="_blank" rel="noreferrer">ContactUs</a></li>
+                        <li><a href="http://www.markosbahgat.com"  target="_blank" rel="noreferrer"><i className="fas fa-user-circle fa-lg"></i></a></li>
                     </ul>
                     <div className='icon menu_btn' onClick={handleShowNavbar}>
                         <i className="fas fa-bars fa-lg"></i>

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import MovieCard from '../movie-card/movie-card.componet';
-import StickyTopNavbar from '../navbar-header/navbar-header.component';
+
 import useMovies from '../../hooks/movies.hook';
 import './primary-page.scss';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,6 @@ const PrimaryPage = () => {
     
     return (
         <>
-            <StickyTopNavbar/>
             <div className='main'>
             {state.movies?.map(movie => {
                 const props = {
