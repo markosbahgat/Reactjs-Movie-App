@@ -4,7 +4,7 @@ import MovieCard from '../movie-card/movie-card.componet';
 import useMovies from '../../hooks/movies.hook';
 import './primary-page.scss';
 import { useSelector } from 'react-redux';
-import LoadMoreButton from '../load-more-button/load-more-button';
+import Pagination from '../Pagination/pagination';
 
 const PrimaryPage = () => {
     useMovies();
@@ -24,7 +24,7 @@ const PrimaryPage = () => {
                     <MovieCard key={movie.id} {...props}/>
                 )})}
             </div>
-            <LoadMoreButton/>
+            <Pagination/>
         </> 
      );
 }

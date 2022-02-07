@@ -1,3 +1,82 @@
+/*import { createSlice } from "@reduxjs/toolkit";
+
+
+
+
+const movieSlice = createSlice({
+    name: "movie",
+    initialState:{movies:[], page: 1, search_query:"", showForm: false},
+    reducers:{
+        SAVE_MOVIES: (state, action) => {
+            state.movies = action.payload;
+        },
+        UPDATE_MOVIES: (state, action) => {},
+    }
+})
+export const movieActions = movieSlice.actions;
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { createStore } from "redux";
 
 export const ACTIONS = {
@@ -6,7 +85,9 @@ export const ACTIONS = {
     PAGE_INCREAMENT: 'page_increament',
     SEARCH_QUERY:'search_query',
     SEARCH_MOVIES:'search_movies',
-    SHOW_FORM:"show_form"
+    SHOW_FORM:"show_form",
+    PAGE_DECREAMENT:"page_decreament",
+    PAGE_WITH_PAYLOAD: "page_with_payload"
 }
 
 
@@ -19,6 +100,10 @@ const moviesReducer = (state ={movies:[], page: 1, search_query:"", showForm: fa
             return {movies:[...state.movies, ...action.payload.movies]};
         case ACTIONS.PAGE_INCREAMENT:
             return {...state, page: state.page + 1};
+        case ACTIONS.PAGE_DECREAMENT:
+            return {...state, page: state.page - 1};
+        case ACTIONS.PAGE_WITH_PAYLOAD:
+            return {...state, page: action.payload.page};
         case ACTIONS.SEARCH_QUERY:
             return {...state, search_query: action.payload.query};
         case ACTIONS.SEARCH_MOVIES:

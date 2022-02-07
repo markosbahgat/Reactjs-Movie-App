@@ -1,12 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { ACTIONS } from '../../store';
 import SearchBar from '../ExpandableSearchBar/SearchBar';
 import './navbar-header.scss'
 import { Link } from "react-router-dom";
 
 const StickyTopNavbar = () => {
-    const dispatch = useDispatch();
 
     const handleShowNavbar = () => {
         const menu = document.querySelector(".menu_list");
@@ -33,10 +30,9 @@ const StickyTopNavbar = () => {
                             <i className="fas fa-times fa-lg"></i>
                         </div>
                         <li><SearchBar/></li>
-                        <li><Link to="/" className="active"><i class="fas fa-home"></i></Link></li>
+                        <li><Link to="/" className="active"><i className="fas fa-home"></i></Link></li>
                         <li><a href="http://www.markosbahgat.com"  target="_blank" rel="noreferrer">About</a></li>
-                        <li style={{display:`${localStorage.getItem("token") && "none"}`}}><a href='/registration' >Sign Up</a></li>
-                        <li style={{display:`${!localStorage.getItem("token") && "none"}`}}><a href='/registration' onClick={() => localStorage.removeItem("token")}>Log Out</a></li>
+                        <li onClick={() => localStorage.getItem("token") && localStorage.removeItem("token")}><a href='/registration'>{localStorage.getItem("token")? "Log Out":"Sign Up"}</a></li>
                         <li><a href="http://www.markosbahgat.com"  target="_blank" rel="noreferrer">ContactUs</a></li>
                         <li><a href="http://www.markosbahgat.com"  target="_blank" rel="noreferrer"><i className="fas fa-user-circle fa-lg"></i></a></li>
                     </ul>

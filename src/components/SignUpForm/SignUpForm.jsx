@@ -80,7 +80,7 @@ const SignUpForm = () => {
                         <input type={values.showPassword ? 'text' : 'password'}  className="input_field" placeholder='Enter your password' name='password' {...register("password", {  required: true })}/>
                         <i className="fas fa-lock fa-lg"></i>
                         <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} className="visibility_icon">
-                          {values.showPassword ? <i class="fas fa-eye-slash"></i> : <i class="fas fa-eye"></i>}
+                          {values.showPassword ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}
                         </div>
                 {errors.password?.type === 'required' && <span>This field is required</span>}
                 </div>
@@ -89,7 +89,7 @@ const SignUpForm = () => {
                       <input type={values.showPassword ? 'text' : 'password'}  className="input_field" placeholder='Enter your password' name='password' {...register("confirmpassword", {  required: true, pattern: /^[A-Za-z]+$/i })}/>
                       <i className="fas fa-lock fa-lg"></i>
                       <div onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} className="visibility_icon">
-                        {values.showPassword ? <i class="fas fa-eye-slash"></i> : <i class="fas fa-eye"></i>}
+                        {values.showPassword ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}
                       </div>
                 {errors.password?.type === 'required' && <span>Please Confirm Your Password</span>}
                 </div>
